@@ -1,7 +1,8 @@
 #pragma once
 #include "Item.h"
-class Armor
+
+class Armor : public Item
 {
 public:
-    
+    Armor(); // Constructor
 };

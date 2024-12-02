@@ -1,7 +1,8 @@
 #pragma once
 #include "Item.h"
-class Heal
+
+class Heal : public Item
 {
 public:
-    
+    Heal(); // Constructor
 };
