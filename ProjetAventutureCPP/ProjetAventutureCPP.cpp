@@ -27,5 +27,5 @@ int main()
     std::cout << "Enemy Health is : " << g1.gethealth() << "\n";
     std::cout << "Enemy attack is : " << g1.getattack()<< "\n";
     std::cout << "Enemy Deffence is : " << g1.getdefense()<< "\n";
-    return 0;
+    return 1;
 }     
