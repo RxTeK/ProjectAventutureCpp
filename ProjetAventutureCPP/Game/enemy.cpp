@@ -14,11 +14,6 @@ std::string enemy::getname()
     return name;
 }
 
-float enemy::getmaxHealth()
-{
-    return maxHealth;
-}
-
 float enemy::gethealth()
 {
     return health;
@@ -39,11 +34,6 @@ void enemy::setName(std::string n)
     name = n;
 }
 
-void enemy::setmaxhealth(float m_maxhealth)
-{
-    maxHealth = m_maxhealth < 0 ? 0 : m_maxhealth;
-}
-
 void enemy::sethealth(float h_health)
 {
     health = h_health < 0 ? 0 : h_health;
@@ -58,4 +48,12 @@ void enemy::setdefense(float d_defense)
 {
     defense = d_defense;
 }
+
+void enemy::reduceHealth(float amount)
+{
+    health -= amount;
+    if (health < 0) health = 0;
+}
+
+
 

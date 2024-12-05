@@ -1,11 +1,11 @@
 #include <iostream>
 
-#include "enemies/Gobelin.h"
-#include "enemies/Ogre.h"
-#include "enemies/Slime.h"
-#include "Items/Armor.h"
-#include "Items/Heal.h"
-#include "Items/Item.h"
+#include "Gobelin.h"
+#include "Ogre.h"
+#include "Slime.h"
+#include "Armor.h"
+#include "Heal.h"
+#include "Item.h"
 
 int main()
 {
