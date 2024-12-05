@@ -1,7 +1,9 @@
 #pragma once
 #include "enemy.h"
-class Slime
+
+class Slime : public enemy
 {
 public:
-    
+    Slime();
+    ~Slime();
 };

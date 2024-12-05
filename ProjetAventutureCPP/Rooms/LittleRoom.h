@@ -1,7 +1,9 @@
 #pragma once
 #include "Room.h"
-class LittleRoom
+
+class LittleRoom : public Room
 {
 public:
-    
+    LittleRoom();
+    ~LittleRoom();
 };

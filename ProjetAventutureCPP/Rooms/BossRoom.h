@@ -1,7 +1,10 @@
 #pragma once
+#include "Room.h"
 
-class BossRoom
+class BossRoom : public Room
 {
 public:
+    BossRoom();
+    ~BossRoom();
     
 };

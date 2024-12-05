@@ -1,7 +1,10 @@
 #pragma once
 #include "enemy.h"
-class Ogre
+
+class Ogre : public enemy
 {
 public:
+    Ogre();
+    ~Ogre();
     
 };
