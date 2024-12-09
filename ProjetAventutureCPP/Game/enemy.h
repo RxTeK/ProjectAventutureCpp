@@ -13,7 +13,6 @@ private:
 public:
 
     enemy();
-    virtual ~enemy();
     
     std::string getname();
     float gethealth();
@@ -24,6 +23,7 @@ public:
     void setattack(float a_attack);
     void setdefense(float d_defense);
     void reduceHealth(float amount);
-    
+
+    friend std::ostream& operator <<(std::ostream& out,enemy& self);
     
 };

@@ -9,10 +9,6 @@ Slime::Slime()
     setdefense(20.0);
 }
 
-Slime::~Slime()
-{
-}
-
 std::string Slime::getattackType()
 {
     return attackType;

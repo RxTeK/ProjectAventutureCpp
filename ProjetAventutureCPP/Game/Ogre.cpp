@@ -8,6 +8,17 @@ Ogre::Ogre()
     setdefense(25.0);
 }
 
-Ogre::~Ogre()
+std::string Ogre::getattackType()
 {
+    return attackType;
+}
+
+void Ogre::setattackType(std::string a_type, Player& target)
+{
+    this -> attackType = a_type;
+    
+    if (a_type == "Punch")
+    {
+        target.reduceHealth(getattack()/(target.getDefense()/100+1));
+    }
 }

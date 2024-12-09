@@ -4,11 +4,14 @@
 #include "enemy.h" 
 class Gobelin : public enemy
 {
+private:
+    std::string attackType;
 
 public:
     Gobelin();
-    ~Gobelin();
 
-    
+
+    std::string getattackType();
+    void setattackType(std::string a_type, Player& target);
     
 };

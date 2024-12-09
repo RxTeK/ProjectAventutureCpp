@@ -40,9 +40,9 @@ int Player::getUseItem()
     return useItem;
 }
 
-void Player::setName(std::string name)
+void Player::setName(std::string n)
 {
-    Player::name = name;
+    Player::name = n;
 }
 
 void Player::setHealth(float h)
@@ -69,4 +69,28 @@ void Player::reduceHealth(float amount)
 {
     health -= amount;
     if (health < 0) health = 0;
+}
+
+std::string Player::getattackType()
+{
+    return attackType;
+}
+
+void Player::setattackType(std::string a_type, enemy& target)
+{
+    this -> attackType = a_type;
+    
+    if (a_type == "Head butt")
+    {
+        target.reduceHealth(getAttack()/(target.getdefense()/100+1));
+    }
+}
+
+std::ostream& operator<<(std::ostream& out, Player& self)
+{
+    out<<"Le nom du player est : "<< self.getName()<<"\n";
+    std::cout << "Player health is " << roundf(self.getHealth()) << "\n";
+    std::cout << "Player attack is " << roundf(self.getAttack()) << "\n";
+    std::cout << "Player defense is " << roundf(self.getDefense()) << "\n";
+    return out;
 }

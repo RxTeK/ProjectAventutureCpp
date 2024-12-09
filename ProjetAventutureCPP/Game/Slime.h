@@ -9,7 +9,7 @@ private:
     
 public:
     Slime();
-    ~Slime();
+
 
     std::string getattackType();
     void setattackType(std::string a_type, Player& Target);

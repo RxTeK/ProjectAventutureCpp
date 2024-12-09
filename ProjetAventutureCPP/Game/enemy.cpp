@@ -5,10 +5,6 @@ enemy::enemy()
 {
 }
 
-enemy::~enemy()
-{
-}
-
 std::string enemy::getname()
 {
     return name;
@@ -55,5 +51,13 @@ void enemy::reduceHealth(float amount)
     if (health < 0) health = 0;
 }
 
+std::ostream& operator<<(std::ostream& out, enemy& self)
+{
+    out<<"Le nom du player est : "<< self.getname()<<"\n";
+    std::cout << "Player health is " << roundf(self.gethealth()) << "\n";
+    std::cout << "Player attack is " << roundf(self.getattack()) << "\n";
+    std::cout << "Player defense is " << roundf(self.getdefense()) << "\n";
+    return out;
+}
 
 
