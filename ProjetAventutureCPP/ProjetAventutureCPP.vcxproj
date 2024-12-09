@@ -894,6 +894,7 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Game\Perso.cpp" />
     <ClCompile Include="Game\Player.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1276,6 +1277,7 @@
     <ClInclude Include="Game\LargeRoom.h" />
     <ClInclude Include="Game\LittleRoom.h" />
     <ClInclude Include="Game\Ogre.h" />
+    <ClInclude Include="Game\Perso.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Room.h" />
     <ClInclude Include="Game\Slime.h" />

@@ -1,11 +1,12 @@
 #include <iostream>
-
+#include "Perso.h"
 #include "Gobelin.h"
 #include "Ogre.h"
 #include "Slime.h"
 #include "Armor.h"
 #include "Heal.h"
 #include "Item.h"
+#include "Player.h"
 
 int main()
 {
@@ -58,7 +59,7 @@ int main()
         s1.setattackType("Head butt",p1);
         std::cout << p1 << "\n";
         std::cout << s1 << "\n";
-        p1.setattackType("Head button",s1);
+        p1.setattackType("Head butt",s1);
         std::cout << s1 << "\n";
     
     return 1;
