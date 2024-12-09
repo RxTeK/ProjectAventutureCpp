@@ -67,17 +67,19 @@ int main()
         switch (choice)
         {
         case 1:
-            std::cout << p1 << "\n";
-            s1.setattackType("Head butt",p1);
-            std::cout << p1 << "\n";
-            std::cout << s1 << "\n";
-            std::cout << "Player attack turn :" << "\n" << "1.Punch      2.Slash" << "\n";
-            std::cin >> p1.attackNumber;
-            p1.setchooseAttack(p1.attackNumber);
-            p1.setattackType(p1.getattackName(),s1);
-            std::cout << s1 << "\n";
-            std::cout << std::endl;
-            initializeRooms(rooms);
+            while (true)
+            {
+                std::cout << p1 << "\n";
+                s1.setattackType("Head butt",p1);
+                std::cout << p1 << "\n";
+                std::cout << s1 << "\n";
+                std::cout << "Player attack turn :" << "\n" << "1.Punch      2.Slash" << "\n";
+                std::cin >> p1.attackNumber;
+                p1.setchooseAttack(p1.attackNumber);
+                p1.setattackType(p1.getattackName(),s1);
+                std::cout << s1 << "\n";
+                std::cout << std::endl;
+            }
             break;
         case 2:
             return 0;
