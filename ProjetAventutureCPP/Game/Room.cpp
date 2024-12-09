@@ -1,8 +1,5 @@
 #include "Room.h"
 
-Room::Room()
-{
-}
 
 std::string Room::getName()
 {

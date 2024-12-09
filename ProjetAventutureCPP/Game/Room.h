@@ -3,7 +3,7 @@
 
 class Room
 {
-private:
+protected:
 
     std::string name;
     int numberEnemy;
@@ -11,7 +11,6 @@ private:
     int reward;
 
 public:
-    Room();
 
     std::string getName();
     int getnumberEnemy();
