@@ -14,6 +14,7 @@
 #include "LittleRoom.h"
 #include "Room.h"
 #include<random>
+
 //create vector rooms
 void initializeRooms(std::vector<Room*>& rooms)
 {
@@ -57,20 +58,28 @@ int main()
 {
     Slime s1;
     Player p1;
-    
-
-    std::cout << p1 << "\n";
-    s1.setattackType("Head butt",p1);
-    std::cout << p1 << "\n";
-    std::cout << s1 << "\n";
-    p1.setattackType("Head butt",s1);
-    std::cout << s1 << "\n";
-    
-    // int choice;
-    // std::cout << std::endl
-    // std::cin << choice;
     std::vector<Room*> rooms;
-    initializeRooms(rooms);
+    while (true)
+    {
+        int choice;
+        std::cout << "play or quit: "<< std::endl;
+        std::cin >> choice;
+        switch (choice)
+        {
+        case 1:
+            std::cout << p1 << "\n";
+            s1.setattackType("Head butt",p1);
+            std::cout << p1 << "\n";
+            std::cout << s1 << "\n";
+            p1.setattackType("Head butt",s1);
+            std::cout << s1 << "\n";
+            std::cout << std::endl;
+            initializeRooms(rooms);
+            break;
+        case 2:
+            return 0;
+        }
+    }
 }
 
 
