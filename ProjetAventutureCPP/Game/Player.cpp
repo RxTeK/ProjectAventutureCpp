@@ -16,7 +16,35 @@ int Player::getUseItem()
     return useItem;
 }
 
+int Player::getchooseAttack()
+{
+    return chooseAttack;
+}
+
+std::string Player::getattackName()
+{
+    return attackName;
+}
+
 void Player::setUseItem(int uItem)
 {
     useItem = uItem;
+}
+
+void Player::setattackName(std::string aName)
+{
+    attackName=aName;
+}
+
+void Player::setchooseAttack(int aType)
+{
+    attackName=aType;
+    if (aType == 1)
+    {
+        setattackName("Punch");
+    }
+    if (aType == 2)
+    {
+        setattackName("Slash");
+    }
 }

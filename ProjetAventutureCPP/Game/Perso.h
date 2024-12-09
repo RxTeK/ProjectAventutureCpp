@@ -12,6 +12,7 @@ private:
     
 public:
     Perso();
+    virtual ~Perso();
     
     std::string getname();
     float gethealth();

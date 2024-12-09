@@ -2,6 +2,14 @@
 
 Perso::Perso()
 {
+    setname("BaseName");
+    sethealth(10.0);
+    setattack(10.0);
+    setdefense(10.0);
+}
+
+Perso::~Perso()
+{
 }
 
 std::string Perso::getname()
@@ -62,6 +70,16 @@ void Perso::setattackType(std::string a_type, Perso& target)
     if (a_type == "Head butt")
     {
         target.reduceHealth(getattack()/(target.getdefense()/100+1));
+        std::cout << getname() << " attack " << target.getname() << "\n";
+    }
+    if (a_type == "Punch")
+    {
+        target.reduceHealth(getattack()/(target.getdefense()/100+1));
+        std::cout << getname() << " attack " << target.getname() << "\n";
+    }
+    if (a_type == "Slash")
+    {
+        target.reduceHealth((getattack()*1.2)/(target.getdefense()/100+1));
         std::cout << getname() << " attack " << target.getname() << "\n";
     }
 }

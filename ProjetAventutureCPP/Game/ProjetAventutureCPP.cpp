@@ -71,7 +71,10 @@ int main()
             s1.setattackType("Head butt",p1);
             std::cout << p1 << "\n";
             std::cout << s1 << "\n";
-            p1.setattackType("Head butt",s1);
+            std::cout << "Player attack turn :" << "\n" << "1.Punch      2.Slash" << "\n";
+            std::cin >> p1.attackNumber;
+            p1.setchooseAttack(p1.attackNumber);
+            p1.setattackType(p1.getattackName(),s1);
             std::cout << s1 << "\n";
             std::cout << std::endl;
             initializeRooms(rooms);
@@ -81,8 +84,3 @@ int main()
         }
     }
 }
-
-
-
-
-
