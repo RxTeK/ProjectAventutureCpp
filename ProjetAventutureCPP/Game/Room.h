@@ -12,7 +12,6 @@ private:
 
 public:
     Room();
-    virtual ~Room();
 
     std::string getName();
     int getnumberEnemy();

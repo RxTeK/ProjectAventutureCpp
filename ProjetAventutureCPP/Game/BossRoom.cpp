@@ -7,6 +7,3 @@ BossRoom::BossRoom()
     setenemyStreght(3);
 }
 
-BossRoom::~BossRoom()
-{
-}

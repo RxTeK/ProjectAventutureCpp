@@ -7,7 +7,3 @@ LargeRoom::LargeRoom()
     setenemyStreght(2);
     setreward(3);
 }
-
-LargeRoom::~LargeRoom()
-{
-}

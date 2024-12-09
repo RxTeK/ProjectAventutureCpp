@@ -5,6 +5,5 @@ class LargeRoom : public Room
 {
 public:
     LargeRoom();
-    ~LargeRoom();
     
 };

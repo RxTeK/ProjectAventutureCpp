@@ -1,5 +1,9 @@
 #include "Room.h"
 
+Room::Room()
+{
+}
+
 std::string Room::getName()
 {
     return name;
@@ -30,9 +34,9 @@ void Room::setnumberEnemy(int number)
     numberEnemy = number;
 }
 
-void Room::setenemyStreght(int streght)
+void Room::setenemyStreght(int s)
 {
-    enemyStreght = streght;
+    enemyStreght = s;
 }
 
 void Room::setreward(int r)

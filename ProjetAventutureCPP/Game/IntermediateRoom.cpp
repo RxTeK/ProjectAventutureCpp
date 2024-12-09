@@ -8,6 +8,4 @@ IntermediateRoom::IntermediateRoom()
     setreward(2);
 }
 
-IntermediateRoom::~IntermediateRoom()
-{
-}
+

@@ -5,5 +5,4 @@ class LittleRoom : public Room
 {
 public:
     LittleRoom();
-    ~LittleRoom();
 };

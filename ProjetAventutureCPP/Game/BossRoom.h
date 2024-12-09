@@ -5,6 +5,5 @@ class BossRoom : public Room
 {
 public:
     BossRoom();
-    ~BossRoom();
     
 };

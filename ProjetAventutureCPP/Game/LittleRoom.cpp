@@ -8,6 +8,3 @@ LittleRoom::LittleRoom()
     setreward(1);
 }
 
-LittleRoom::~LittleRoom()
-{
-}

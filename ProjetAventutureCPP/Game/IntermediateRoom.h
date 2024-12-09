@@ -5,6 +5,5 @@ class IntermediateRoom : public Room
 {
 public:
     IntermediateRoom();
-    ~IntermediateRoom();
     
 };
