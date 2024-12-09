@@ -8,4 +8,5 @@ public:
     Slime();
 
     
+    virtual void setattackType(std::string a_type, Perso& target);
 };

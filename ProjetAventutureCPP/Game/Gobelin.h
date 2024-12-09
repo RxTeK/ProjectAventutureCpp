@@ -1,13 +1,12 @@
 #pragma once
-#include <set>
+#include "enemy.h"
 
-#include "enemy.h" 
 class Gobelin : public enemy
 {
-private:
 
 public:
     Gobelin();
+
     
-    
+    virtual void setattackType(std::string a_type, Perso& target);
 };

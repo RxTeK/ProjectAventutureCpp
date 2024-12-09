@@ -9,4 +9,15 @@ Armor::Armor()
     setUpgrade(5);
 }
 
+int Armor::getprotectionEffect()
+{
+    return protectionEffect;
+}
+
+void Armor::setprotectionEffect(int d_Effect, Player& target)
+{
+    protectionEffect = d_Effect;
+    target.setaddDefense(5.0);
+}
+
 

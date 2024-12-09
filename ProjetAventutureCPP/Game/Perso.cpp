@@ -3,7 +3,7 @@
 Perso::Perso()
 {
     setname("BaseName");
-    sethealth(10.0);
+
     setattack(10.0);
     setdefense(10.0);
 }
@@ -32,6 +32,18 @@ float Perso::getdefense()
     return defense;
 }
 
+bool Perso::dead()
+{
+    if (health <= 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 void Perso::setname(std::string n)
 {
     name = n;
@@ -49,7 +61,8 @@ void Perso::setattack(float a_attack)
 
 void Perso::setdefense(float d_defense)
 {
-    defense = d_defense;
+    defense = d_defense > 80 ? 80 : d_defense;
+    
 }
 
 void Perso::reduceHealth(float amount)
@@ -66,22 +79,6 @@ std::string Perso::getattackType()
 void Perso::setattackType(std::string a_type, Perso& target)
 {
     this -> attackType = a_type;
-    
-    if (a_type == "Head butt")
-    {
-        target.reduceHealth(getattack()/(target.getdefense()/100+1));
-        std::cout << getname() << " attack " << target.getname() << " dealing " << roundf(getattack()/(target.getdefense()/100+1)) << " damage" << "\n";
-    }
-    if (a_type == "Punch")
-    {
-        target.reduceHealth(getattack()/(target.getdefense()/100+1));
-        std::cout << getname() << " attack " << target.getname() << " dealing " << roundf(getattack()/(target.getdefense()/100+1)) << " damage" << "\n";
-    }
-    if (a_type == "Slash")
-    {
-        target.reduceHealth((getattack()*1.2)/(target.getdefense()/100+1));
-        std::cout << getname() << " attack " << target.getname() << " dealing " << roundf(getattack()/(target.getdefense()/100+1)) << " damage" << "\n";
-    }
 }
 
 std::ostream& operator<<(std::ostream& out, Perso& self)

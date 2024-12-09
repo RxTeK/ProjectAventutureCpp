@@ -13,18 +13,18 @@ private:
 public:
     Perso();
     virtual ~Perso();
-    
     std::string getname();
     float gethealth();
     float getattack();
     float getdefense();
+    bool dead();
     std::string getattackType();
-    virtual void setname(std::string n);
-    virtual void sethealth(float h_health);
-    virtual void setattack(float a_attack);
-    virtual void setdefense(float d_defense);
-    virtual void reduceHealth(float amount);
-    virtual void setattackType(std::string a_type, Perso& target);
+    void setname(std::string n);
+    void sethealth(float h_health);
+    void setattack(float a_attack);
+    void setdefense(float d_defense);
+    void reduceHealth(float amount);
+    virtual void setattackType(std::string a_type, Perso& target)=0;
 
     friend std::ostream& operator <<(std::ostream& out,Perso& self);
 };
