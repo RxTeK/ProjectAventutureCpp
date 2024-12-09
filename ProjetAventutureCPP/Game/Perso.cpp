@@ -70,24 +70,24 @@ void Perso::setattackType(std::string a_type, Perso& target)
     if (a_type == "Head butt")
     {
         target.reduceHealth(getattack()/(target.getdefense()/100+1));
-        std::cout << getname() << " attack " << target.getname() << "\n";
+        std::cout << getname() << " attack " << target.getname() << " dealing " << roundf(getattack()/(target.getdefense()/100+1)) << " damage" << "\n";
     }
     if (a_type == "Punch")
     {
         target.reduceHealth(getattack()/(target.getdefense()/100+1));
-        std::cout << getname() << " attack " << target.getname() << "\n";
+        std::cout << getname() << " attack " << target.getname() << " dealing " << roundf(getattack()/(target.getdefense()/100+1)) << " damage" << "\n";
     }
     if (a_type == "Slash")
     {
         target.reduceHealth((getattack()*1.2)/(target.getdefense()/100+1));
-        std::cout << getname() << " attack " << target.getname() << "\n";
+        std::cout << getname() << " attack " << target.getname() << " dealing " << roundf(getattack()/(target.getdefense()/100+1)) << " damage" << "\n";
     }
 }
 
 std::ostream& operator<<(std::ostream& out, Perso& self)
 {
     out << "\n";
-    std::cout<<"Le nom du character est : "<< self.getname()<<"\n";
+    std::cout << self.getname()<<"\n";
     std::cout << self.getname() <<" health is " << roundf(self.gethealth()) << "\n";
     std::cout << self.getname() <<" attack is " << roundf(self.getattack()) << "\n";
     std::cout << self.getname() <<" defense is " << roundf(self.getdefense()) << "\n";

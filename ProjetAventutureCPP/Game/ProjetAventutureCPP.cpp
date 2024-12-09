@@ -1,4 +1,6 @@
 #include <iostream>
+#include <random>
+#include <windows.h>
 #include "Perso.h"
 #include <vector>
 #include "Gobelin.h"
@@ -13,7 +15,6 @@
 #include "LargeRoom.h"
 #include "LittleRoom.h"
 #include "Room.h"
-#include<random>
 
 //create vector rooms
 void initializeRooms(std::vector<Room*>& rooms)
@@ -69,16 +70,21 @@ int main()
         case 1:
             while (true)
             {
-                std::cout << p1 << "\n";
-                s1.setattackType("Head butt",p1);
-                std::cout << p1 << "\n";
+                system("cls");
+                std::cout << p1;
+                Sleep(1000);
                 std::cout << s1 << "\n";
+                Sleep(1000);
                 std::cout << "Player attack turn :" << "\n" << "1.Punch      2.Slash" << "\n";
                 std::cin >> p1.attackNumber;
+                system("cls");
                 p1.setchooseAttack(p1.attackNumber);
                 p1.setattackType(p1.getattackName(),s1);
-                std::cout << s1 << "\n";
-                std::cout << std::endl;
+                Sleep(4000);
+                system("cls");
+                s1.setattackType("Head butt",p1);
+                Sleep(4000);
+                system("cls");
             }
             break;
         case 2:
