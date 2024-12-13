@@ -302,6 +302,7 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Game\Dragon.cpp" />
     <ClCompile Include="Game\enemy.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -894,6 +895,7 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Game\Orc.cpp" />
     <ClCompile Include="Game\Perso.cpp" />
     <ClCompile Include="Game\Player.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1269,6 +1271,7 @@
   <ItemGroup>
     <ClInclude Include="Game\Armor.h" />
     <ClInclude Include="Game\BossRoom.h" />
+    <ClInclude Include="Game\Dragon.h" />
     <ClInclude Include="Game\enemy.h" />
     <ClInclude Include="Game\Gobelin.h" />
     <ClInclude Include="Game\Heal.h" />
@@ -1277,6 +1280,7 @@
     <ClInclude Include="Game\LargeRoom.h" />
     <ClInclude Include="Game\LittleRoom.h" />
     <ClInclude Include="Game\Ogre.h" />
+    <ClInclude Include="Game\Orc.h" />
     <ClInclude Include="Game\Perso.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Room.h" />

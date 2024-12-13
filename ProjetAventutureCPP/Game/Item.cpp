@@ -1,13 +1,23 @@
 #include "Item.h"
 
+Item::Item()
+{
+    setName("Item");
+    setDescription("An Item");
+}
+
+Item::~Item()
+{
+}
+
 std::string Item::getName()
 {
     return name;
 }
 
-void Item::setName(std::string name)
+void Item::setName(std::string n)
 {
-    this->name = name;
+    this->name = n;
 }
 
 std::string Item::getDescription()
@@ -15,17 +25,26 @@ std::string Item::getDescription()
     return description;
 }
 
-void Item::setDescription(std::string description)
+void Item::setDescription(std::string des)
 {
-    this->description = description;
+    this->description = des;
 }
 
-int Item::getUpgrade()
+std::string Item::geteffectType()
 {
-    return upgrade;
+    return effectType;
 }
 
-void Item::setUpgrade(int upgrade)
+void Item::seteffectType(std::string e_Type, Player& target)
 {
-    this->upgrade = upgrade;
+    this -> effectType = e_Type;
+}
+
+std::ostream& operator<<(std::ostream& out, Item& self)
+{
+    out << "\n";
+    std::cout << self.getName()<<"\n";
+    std::cout << "Description : "<< self.getDescription() << "\n";
+    std::cout << "\n";
+    return out;
 }

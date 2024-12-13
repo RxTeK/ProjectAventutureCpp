@@ -3,18 +3,15 @@
 Heal::Heal()
 {
     // Initialisation des valeurs
-    setName("Heal");
-    setDescription("A potion for heal.");
-    setUpgrade(10);
+    setName("Health Potion");
+    setDescription("A potion to add 10 extra health health.");
 }
 
-int Heal::getHealEffect()
+void Heal::seteffectType(std::string e_Type, Player& target)
 {
-    return healEffect;
-}
-
-void Heal::setHealEffect(int h_Effect, Player& target)
-{
-    healEffect = h_Effect;
-    target.setaddHealth(10.0);
+    if (e_Type == "HealEffect")
+    {
+        target.setaddHealth(10.0);
+        std::cout << "You Gained 10 extra HP with Health Potion. \n";
+    }
 }

@@ -4,11 +4,8 @@
 
 class Armor : public Item
 {
-private:
-    int protectionEffect;
 public:
     Armor(); // Constructor
 
-    int getprotectionEffect();
-    void setprotectionEffect(int d_Effect, Player& target);
+    virtual void seteffectType(std::string e_Type, Player& target);
 };

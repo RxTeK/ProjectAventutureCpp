@@ -4,20 +4,17 @@
 Armor::Armor()
 {
     // Initialisation des valeurs
-    setName("Armor");
-    setDescription("A sturdy piece of armor which increases defense.");
-    setUpgrade(5);
+    setName("Upgrade Armor");
+    setDescription("A sturdy piece of armor which lower your chance to lose limbs.");
 }
 
-int Armor::getprotectionEffect()
+void Armor::seteffectType(std::string e_Type, Player& target)
 {
-    return protectionEffect;
-}
-
-void Armor::setprotectionEffect(int d_Effect, Player& target)
-{
-    protectionEffect = d_Effect;
-    target.setaddDefense(5.0);
+    if (e_Type == "DefenseEffect")
+    {
+        target.setaddDefense(5.0);
+        std::cout << "You Gained 5 extra DEF with Armor Upgrade. \n";
+    }
 }
 
 

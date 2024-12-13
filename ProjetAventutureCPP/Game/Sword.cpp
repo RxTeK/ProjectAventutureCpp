@@ -2,18 +2,15 @@
 
 Sword::Sword()
 {
-    setName("Sword");
-    setDescription("A sword to hit stronger.");
-    setUpgrade(2);
+    setName("UpgradeSword");
+    setDescription("A better sword for better damage.");
 }
 
-int Sword::getdamageEffect()
+void Sword::seteffectType(std::string e_Type, Player& target)
 {
-    return damageEffect;
-}
-
-void Sword::setdamageEffect(int d_Effect, Player& target)
-{
-    damageEffect = d_Effect;
-    target.setaddAttack(2.0);
+    if (e_Type == "AttackEffect")
+    {
+        target.setaddAttack(3.0);
+        std::cout << "You Gained 3 extra DMG with Sword Upgrade. \n";
+    }
 }

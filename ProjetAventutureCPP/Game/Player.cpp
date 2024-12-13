@@ -6,7 +6,7 @@ Player::Player()
 {
     setname("Player");
     sethealth(30.0);
-    setattack(15.0);
+    setattack(17.0);
     setdefense(15.0);
     
 }
@@ -51,14 +51,14 @@ void Player::setattackName(std::string aName)
     attackName=aName;
 }
 
-void Player::setchooseAttack(int aType)
+void Player::setchooseAttack(int a_Type)
 {
-    attackName=aType;
-    if (aType == 1)
+    attackName=a_Type;
+    if (a_Type == 1)
     {
         setattackName("Punch");
     }
-    if (aType == 2)
+    if (a_Type == 2)
     {
         setattackName("Slash");
     }
@@ -69,29 +69,29 @@ void Player::setattackType(std::string a_type, Perso& target)
     if (a_type == "Punch")
     {
         target.reduceHealth(getattack()/(target.getdefense()/100+1));
-        std::cout << getname() << " attack " << target.getname() << " dealing " << roundf(getattack()/(target.getdefense()/100+1)) << " damage" << "\n";
+        std::cout << getname() << " attack " << target.getname() << " with Punch dealing " << roundf(getattack()/(target.getdefense()/100+1)) << " damage" << "\n";
     }
     if (a_type == "Slash")
     {
         target.reduceHealth((getattack()*1.2)/(target.getdefense()/100+1));
-        std::cout << getname() << " attack " << target.getname() << " dealing " << roundf((getattack()*1.2)/(target.getdefense()/100+1)) << " damage" << "\n";
+        std::cout << getname() << " attack " << target.getname() << " with Slash dealing " << roundf((getattack()*1.2)/(target.getdefense()/100+1)) << " damage" << "\n";
     }
 }
 
 void Player::setaddHealth(float a_Health)
 {
+    sethealth(gethealth()+a_Health);
     addHealth = a_Health;
-    sethealth(gethealth()+addHealth);
 }
 
 void Player::setaddAttack(float a_Attack)
 {
+    setattack(getattack()+a_Attack);
     addAttack = a_Attack;
-    setattack(getattack()+addAttack);
 }
 
 void Player::setaddDefense(float a_defense)
 {
+    setdefense(getdefense()+a_defense);
     addDefense = a_defense;
-    setdefense(getdefense()+addDefense);
 }

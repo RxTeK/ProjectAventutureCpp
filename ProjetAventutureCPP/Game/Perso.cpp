@@ -52,11 +52,12 @@ void Perso::setname(std::string n)
 void Perso::sethealth(float h_health)
 {
     health = h_health < 0 ? 0 : h_health;
+    health = h_health > 100 ? 100 : h_health;
 }
 
 void Perso::setattack(float a_attack)
 {
-    attack = a_attack;
+    attack = a_attack; // > 30 ? 30 : a_attack
 }
 
 void Perso::setdefense(float d_defense)

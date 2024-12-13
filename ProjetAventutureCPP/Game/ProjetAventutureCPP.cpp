@@ -3,14 +3,18 @@
 #include <windows.h>
 #include "Perso.h"
 #include <vector>
+#include "Dragon.h"
+#include "Orc.h"
 #include "Gobelin.h"
 #include "Ogre.h"
 #include "Slime.h"
 #include "Armor.h"
 #include "BossRoom.h"
-#include "Heal.h"
-#include "IntermediateRoom.h"
 #include "Item.h"
+#include "Heal.h"
+#include "Armor.h"
+#include "Sword.h"
+#include "IntermediateRoom.h"
 #include "Player.h"
 #include "LargeRoom.h"
 #include "LittleRoom.h"
@@ -100,13 +104,15 @@ void initializeEnemies(std::vector<enemy*>& enemies, std::vector<Room*>& rooms)
 {
     Slime slime;
     Gobelin gobelin;
+    Orc orc;
+    Ogre ogre;
 
     for (size_t i = 0; i < rooms[0]->getnumberEnemy(); ++i)
     {
         //random
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_int_distribution<> dis(1, 2);
+        std::uniform_int_distribution<> dis(1, 4);
         int randomVal = dis(gen);
 
         switch (randomVal)
@@ -117,12 +123,47 @@ void initializeEnemies(std::vector<enemy*>& enemies, std::vector<Room*>& rooms)
         case 2:
             enemies.push_back(new Gobelin);
             break;
+        case 3:
+            enemies.push_back(new Orc);
+            break;
+        case 4:
+            enemies.push_back(new Ogre);
+            break;
+        default:
+            return;
         }
+    }
+}
+
+void chooseReward(Player player)
+{
+    Heal healthPotion;
+    Sword sword;
+    Armor armor;
+    int rewardChoice;
+    std::cout << "Choose your Reward.\n" << "1." << healthPotion << "2." << sword << "3." << armor <<"\n";
+    std::cin >> rewardChoice;
+    while (true)
+    {
+            switch (rewardChoice)
+            {
+            case 1:
+                healthPotion.seteffectType("HealEffect",player);
+                break;
+            case 2:
+                sword.seteffectType("AttackEffect",player);
+                break;
+            case 3:
+                armor.seteffectType("DefenseEffect",player);
+                break;
+            }
+        break;
     }
 }
 
 int main()
 {
+    
     int nbrRoom = 1;
     Player p1_obj;
     Player* p1 = &p1_obj;
@@ -175,6 +216,7 @@ int main()
                 {
                     std::cout << "Room cleared!\n";
                     rooms.erase(rooms.begin());
+                    chooseReward(p1_obj);
                     nbrRoom++;
                 }
             }
