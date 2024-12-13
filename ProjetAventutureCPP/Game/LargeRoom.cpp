@@ -3,7 +3,7 @@
 LargeRoom::LargeRoom()
 {
     setName("Large Room");
-    setnumberEnemy(2);
+    setnumberEnemy(3);
     setenemyStreght(2);
     setreward(3);
 }

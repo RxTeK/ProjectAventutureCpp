@@ -28,7 +28,7 @@ void initializeRooms(std::vector<Room*>& rooms)
     IntermediateRoom intermediateRoom;
     LargeRoom largeRoom;
     BossRoom bossRoom;
-    for (size_t i = 0; i < 5; ++i)
+    for (int i = 0; i < 3; ++i)
     {
         //random
         std::random_device rd;
@@ -51,6 +51,8 @@ void initializeRooms(std::vector<Room*>& rooms)
     }
     //rooms.push_back(&bossRoom);
 }
+
+//fight
 void fight(Player* player, Perso* enemy, bool& isDead)
 {
     isDead = false;
@@ -92,17 +94,41 @@ void fight(Player* player, Perso* enemy, bool& isDead)
     Sleep(2000);
     //system("cls");
 }
+
+//create vector enemies
+void initializeEnemies(std::vector<enemy*>& enemies, std::vector<Room*>& rooms)
+{
+    Slime slime;
+    Gobelin gobelin;
+
+    for (size_t i = 0; i < rooms[0]->getnumberEnemy(); ++i)
+    {
+        //random
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> dis(1, 2);
+        int randomVal = dis(gen);
+
+        switch (randomVal)
+        {
+        case 1:
+            enemies.push_back(new Slime);
+            break;
+        case 2:
+            enemies.push_back(new Gobelin);
+            break;
+        }
+    }
+}
+
 int main()
 {
+    int nbrRoom = 1;
     Player p1_obj;
     Player* p1 = &p1_obj;
     std::vector<enemy*> monsters;
-    monsters.push_back(new Slime());
-    monsters.push_back(new Gobelin());
-    monsters.push_back(new Slime());
     std::vector<Room*> rooms;
     initializeRooms(rooms);
-    bool isDead = false;
     
     // Tick
     while (true)
@@ -114,14 +140,11 @@ int main()
         {
         case KEY_LEFT:
             // Room
-                for (size_t i = 0; i < rooms.size(); ++i)
-                {
-                    std::cout << rooms[i]->getName() << std::endl;
-                }
             while(!rooms.empty())
             {
-                std::cout << rooms.back()->getName() << "\n";
-                std::cout << "Room 1: " << rooms[0]->getnumberEnemy() << " enemies." << std::endl;
+                std::cout << rooms[0]->getName() << std::endl;
+                initializeEnemies(monsters, rooms);
+                std::cout << "Room " << nbrRoom << ": " << rooms[0]->getnumberEnemy() << " enemies." << std::endl;
                   
                 while (rooms[0]->getnumberEnemy() > 0)
                 {
@@ -144,19 +167,17 @@ int main()
                     {
                         // NON
                         std::cout << "No more enemies to fight in this room.\n";
-                        break;
+                        return 0;
                     }
                 }
 
                 if (rooms[0]->getnumberEnemy() == 0)
                 {
                     std::cout << "Room cleared!\n";
+                    rooms.erase(rooms.begin());
+                    nbrRoom++;
                 }
-                    
-                rooms.erase(rooms.begin());
-                break;
             }
-            break;
 
             // Quit
         case KEY_RIGHT:
@@ -165,7 +186,7 @@ int main()
             // Invalid input
         default:
             std::cout << "Invalid input. Try again.\n";
-            break;
+            return 0;
         }
     }
 }
