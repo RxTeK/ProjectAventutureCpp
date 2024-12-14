@@ -26,13 +26,12 @@
 #define KEY_RIGHT 'd'
 
 //create vector rooms
-void initializeRooms(std::vector<Room*>& rooms)
+void initializeRooms(std::vector<Room*>& rooms, BossRoom)
 {
     LittleRoom littleRoom;
     IntermediateRoom intermediateRoom;
     LargeRoom largeRoom;
-    BossRoom bossRoom;
-    for (int i = 0; i < 3; ++i)
+    for (int i = 0; i < 4; ++i)
     {
         //random
         std::random_device rd;
@@ -53,7 +52,11 @@ void initializeRooms(std::vector<Room*>& rooms)
             break;
         }
     }
-    //rooms.push_back(&bossRoom);
+    rooms.push_back(new BossRoom());
+    for (int i = 0; i < rooms.size(); ++i)
+    {
+        std::cout << rooms[i]->getName() << std::endl;
+    }
 }
 
 //fight
@@ -163,13 +166,13 @@ void chooseReward(Player player)
 
 int main()
 {
-    
     int nbrRoom = 1;
     Player p1_obj;
     Player* p1 = &p1_obj;
     std::vector<enemy*> monsters;
     std::vector<Room*> rooms;
-    initializeRooms(rooms);
+    BossRoom bossRoom;
+    initializeRooms(rooms, bossRoom);
     
     // Tick
     while (true)
@@ -181,45 +184,59 @@ int main()
         {
         case KEY_LEFT:
             // Room
-            while(!rooms.empty())
-            {
-                std::cout << rooms[0]->getName() << std::endl;
-                initializeEnemies(monsters, rooms);
-                std::cout << "Room " << nbrRoom << ": " << rooms[0]->getnumberEnemy() << " enemies." << std::endl;
-                  
-                while (rooms[0]->getnumberEnemy() > 0)
+                while(!rooms.empty())
                 {
-                       
-                    if (!monsters.empty())
+                    std::cout << rooms[0]->getName() << std::endl;
+                    std::cout << "Room " << nbrRoom << ": " << rooms[0]->getnumberEnemy() << " enemies." << std::endl;
+                
+                    if (rooms[0]->getName() == bossRoom.getName() )
                     {
-                        enemy* lastEnemy = monsters.back();
-                        bool enemyIsDead = false;
-                        fight(p1, lastEnemy, enemyIsDead);
-                        
-                        if (enemyIsDead)
-                        {
-                            std::cout << "An enemy is dead." << std::endl;
-                            monsters.pop_back();
-                            delete lastEnemy;
-                            rooms[0]->setnumberEnemy(rooms[0]->getnumberEnemy() - 1);
-                        }
+                        monsters.push_back(new Dragon);
                     }
                     else
                     {
-                        // NON
-                        std::cout << "No more enemies to fight in this room.\n";
-                        return 0;
+                        initializeEnemies(monsters, rooms);
+                    }
+                
+                    while (rooms[0]->getnumberEnemy() > 0)
+                    {
+                       
+                        if (!monsters.empty())
+                        {
+                            enemy* lastEnemy = monsters.back();
+                            bool enemyIsDead = false;
+                            fight(p1, lastEnemy, enemyIsDead);
+                        
+                            if (enemyIsDead)
+                            {
+                                std::cout << "An enemy is dead." << std::endl;
+                                monsters.pop_back();
+                                delete lastEnemy;
+                                rooms[0]->setnumberEnemy(rooms[0]->getnumberEnemy() - 1);
+                            }
+                        }
+                        else
+                        {
+                            // NON
+                            std::cout << "No more enemies to fight in this room.\n";
+                            return 0;
+                        }
+                    }
+
+                    if (rooms[0]->getnumberEnemy() == 0)
+                    {
+                        std::cout << "Room cleared!\n";
+                        if (rooms[0]->getName() == bossRoom.getName() )
+                        {
+                            std::cout << "You have WIN!\n";
+                            Sleep(2000);
+                            return 0;
+                        }
+                        rooms.erase(rooms.begin());
+                        chooseReward(p1_obj);
+                        nbrRoom++; 
                     }
                 }
-
-                if (rooms[0]->getnumberEnemy() == 0)
-                {
-                    std::cout << "Room cleared!\n";
-                    rooms.erase(rooms.begin());
-                    chooseReward(p1_obj);
-                    nbrRoom++;
-                }
-            }
 
             // Quit
         case KEY_RIGHT:

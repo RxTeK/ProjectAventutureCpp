@@ -3,7 +3,7 @@
 BossRoom::BossRoom()
 {
     setName("Boss Room");
-    setnumberEnemy(2);
+    setnumberEnemy(1);
     setenemyStreght(3);
 }
 
