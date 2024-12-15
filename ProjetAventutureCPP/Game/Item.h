@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "Player.h"
+#include "Perso.h"
 
 class Item
 {
@@ -20,7 +20,7 @@ public:
     std::string getDescription();
     void setDescription(std::string description);
     std::string geteffectType();
-    virtual void seteffectType(std::string e_Type, Player& target) = 0;
+    virtual void seteffectType(std::string e_Type, Perso& target) = 0;
 
     friend std::ostream& operator <<(std::ostream& out,Item& target);
 };

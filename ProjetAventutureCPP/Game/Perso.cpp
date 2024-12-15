@@ -72,6 +72,21 @@ void Perso::reduceHealth(float amount)
     if (health < 0) health = 0;
 }
 
+void Perso::addHealth(float amount)
+{
+    health += amount;
+}
+
+void Perso::addAttack(float amount)
+{
+    attack += amount;
+}
+
+void Perso::addDefense(float amount)
+{
+    defense += amount;
+}
+
 std::string Perso::getattackType()
 {
     return attackType;

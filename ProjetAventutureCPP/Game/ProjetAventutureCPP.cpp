@@ -138,7 +138,7 @@ void initializeEnemies(std::vector<enemy*>& enemies, std::vector<Room*>& rooms)
     }
 }
 
-void chooseReward(Player player)
+void chooseReward(Player &player)
 {
     Heal healthPotion;
     Sword sword;
@@ -151,14 +151,17 @@ void chooseReward(Player player)
             switch (rewardChoice)
             {
             case 1:
-                healthPotion.seteffectType("HealEffect",player);
+                healthPotion.seteffectType("Effect",player);
                 break;
             case 2:
-                sword.seteffectType("AttackEffect",player);
+                sword.seteffectType("Effect",player);
                 break;
             case 3:
-                armor.seteffectType("DefenseEffect",player);
+                armor.seteffectType("Effect",player);
                 break;
+            default:
+                std::cout << "Choose y";
+                return;
             }
         break;
     }
@@ -233,7 +236,7 @@ int main()
                             return 0;
                         }
                         rooms.erase(rooms.begin());
-                        chooseReward(p1_obj);
+                        chooseReward(*p1);
                         nbrRoom++; 
                     }
                 }

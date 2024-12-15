@@ -7,5 +7,5 @@ class Armor : public Item
 public:
     Armor(); // Constructor
 
-    virtual void seteffectType(std::string e_Type, Player& target);
+    virtual void seteffectType(std::string e_Type, Perso& target);
 };

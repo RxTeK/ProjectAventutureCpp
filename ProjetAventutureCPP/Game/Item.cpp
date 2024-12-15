@@ -35,7 +35,7 @@ std::string Item::geteffectType()
     return effectType;
 }
 
-void Item::seteffectType(std::string e_Type, Player& target)
+void Item::seteffectType(std::string e_Type, Perso& target)
 {
     this -> effectType = e_Type;
 }

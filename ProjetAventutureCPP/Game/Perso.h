@@ -24,6 +24,9 @@ public:
     void setattack(float a_attack);
     void setdefense(float d_defense);
     void reduceHealth(float amount);
+    void addHealth(float amount);
+    void addAttack(float amount);
+    void addDefense(float amount);
     virtual void setattackType(std::string a_type, Perso& target)=0;
 
     friend std::ostream& operator <<(std::ostream& out,Perso& self);
