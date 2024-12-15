@@ -8,11 +8,10 @@
 #include "Gobelin.h"
 #include "Ogre.h"
 #include "Slime.h"
-#include "Armor.h"
 #include "BossRoom.h"
 #include "Item.h"
-#include "Heal.h"
 #include "Armor.h"
+#include "Heal.h"
 #include "Sword.h"
 #include "IntermediateRoom.h"
 #include "Player.h"
@@ -55,7 +54,7 @@ void initializeRooms(std::vector<Room*>& rooms, BossRoom)
     rooms.push_back(new BossRoom());
     for (int i = 0; i < rooms.size(); ++i)
     {
-        std::cout << rooms[i]->getName() << std::endl;
+        std::cout << rooms[i]->getName() << "\n";
     }
 }
 
@@ -167,6 +166,15 @@ void chooseReward(Player &player)
     }
 }
 
+void clearHeal(Player &player)
+{
+    if (player.gethealth()<30)
+    {
+        player.sethealth(30);
+        std::cout << "You have been healed\n";
+    }
+}
+
 int main()
 {
     int nbrRoom = 1;
@@ -189,8 +197,8 @@ int main()
             // Room
                 while(!rooms.empty())
                 {
-                    std::cout << rooms[0]->getName() << std::endl;
-                    std::cout << "Room " << nbrRoom << ": " << rooms[0]->getnumberEnemy() << " enemies." << std::endl;
+                    std::cout << rooms[0]->getName() << "\n";
+                    std::cout << "Room " << nbrRoom << ": " << rooms[0]->getnumberEnemy() << " enemies." << "\n";
                 
                     if (rooms[0]->getName() == bossRoom.getName() )
                     {
@@ -212,7 +220,7 @@ int main()
                         
                             if (enemyIsDead)
                             {
-                                std::cout << "An enemy is dead." << std::endl;
+                                std::cout << "An enemy is dead." << "\n";
                                 monsters.pop_back();
                                 delete lastEnemy;
                                 rooms[0]->setnumberEnemy(rooms[0]->getnumberEnemy() - 1);
@@ -236,6 +244,7 @@ int main()
                             return 0;
                         }
                         rooms.erase(rooms.begin());
+                        clearHeal(*p1);
                         chooseReward(*p1);
                         nbrRoom++; 
                     }
