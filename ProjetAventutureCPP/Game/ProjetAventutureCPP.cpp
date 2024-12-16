@@ -103,19 +103,21 @@ void fight(Player* player, Perso* enemy, bool& isDead)
     SetConsoleTextAttribute(hConsole, 3);
 
     // Tour du joueur
-    SetConsoleTextAttribute(hConsole, 3);
-    std::cout << "Player attack turn:\nq. Punch      d. Slash\n";
-    char attak = '^';
-    attak = _getch();
-    switch ( attak)
-    {
-    case KEY_LEFT:
-        player->attackNumber = 1;
-        break;
-    case KEY_RIGHT:
-        player->attackNumber = 2;
-        break;
-    }
+        SetConsoleTextAttribute(hConsole, 3);
+        std::cout << "Player attack turn:\nq. Punch      d. Slash\n";
+        char attak = '^';
+        attak = _getch();
+        switch ( attak)
+        {
+        case KEY_LEFT:
+            player->attackNumber = 1;
+            break;
+        case KEY_RIGHT:
+            player->attackNumber = 2;
+            break;
+        default:
+            std::cout << "tu cherche aussi";
+        }
     system("cls");
     SetConsoleTextAttribute(hConsole, 2);
     player->setchooseAttack(player->attackNumber);
@@ -142,7 +144,8 @@ void fight(Player* player, Perso* enemy, bool& isDead)
     // Vérifie si le joueur est mort
     if (player->dead())
     {
-        text("You are dead! Game Over.\n");
+        SetConsoleTextAttribute(hConsole,3);
+        text("You are dead! Game Over.");
         Sleep(5000);
         exit(0);
     }
@@ -194,25 +197,25 @@ void chooseReward(Player &player)
     Sword sword;
     Armor armor;
     int rewardChoice;
-    std::cout << "Choose your Reward.\n" << "1." << healthPotion << "2." << sword << "3." << armor <<"\n";
-    std::cin >> rewardChoice;
+    std::cout << "Choose your Reward.\n" << "q." << healthPotion << "s." << sword << "d." << armor <<"\n";
     SetConsoleTextAttribute(hConsole, 1);
     while (true)
     {
-            switch (rewardChoice)
+        char potionC = '^';
+        potionC = _getch();
+            switch (potionC)
             {
-            case 1:
+            case 'q':
                 healthPotion.seteffectType("Effect",player);
                 break;
-            case 2:
+            case 's':
                 sword.seteffectType("Effect",player);
                 break;
-            case 3:
+            case 'd':
                 armor.seteffectType("Effect",player);
                 break;
             default:
                 std::cout << "Choose y";
-                return;
             }
         break;
     }
