@@ -4,8 +4,8 @@ Ogre::Ogre()
 {
     setname("Ogre");
     sethealth(20.0);
-    setattack(20.0);
-    setdefense(15.0);
+    setattack(15.0);
+    setdefense(25.0);
 }
 
 void Ogre::setattackType(std::string a_type, Perso& target)

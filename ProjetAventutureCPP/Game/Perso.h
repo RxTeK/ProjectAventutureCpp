@@ -9,6 +9,7 @@ private:
     float attack;
     float defense;
     std::string attackType;
+    float maxHealth;
     
 public:
     Perso();
@@ -19,6 +20,7 @@ public:
     float getdefense();
     bool dead();
     std::string getattackType();
+    float getmaxHealth();
     void setname(std::string n);
     void sethealth(float h_health);
     void setattack(float a_attack);
@@ -28,6 +30,7 @@ public:
     void addAttack(float amount);
     void addDefense(float amount);
     virtual void setattackType(std::string a_type, Perso& target)=0;
+    void setmaxHealth(float maxH);
 
     friend std::ostream& operator <<(std::ostream& out,Perso& self);
 };

@@ -7,9 +7,7 @@ private:
     int chooseAttack;
     std::string attackName;
     int useItem;
-    float addHealth;
-    float addAttack;
-    float addDefense;
+
     
 public:
 

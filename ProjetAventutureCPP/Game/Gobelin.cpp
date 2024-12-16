@@ -3,8 +3,8 @@
 Gobelin::Gobelin()
 {
     setname("Gobelin");
-    sethealth(30.0);
-    setattack(15.0);
+    sethealth(13.0);
+    setattack(8.0);
     setdefense(18.0);
 }
 

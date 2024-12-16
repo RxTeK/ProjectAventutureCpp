@@ -57,12 +57,12 @@ void Perso::sethealth(float h_health)
 
 void Perso::setattack(float a_attack)
 {
-    attack = a_attack;
+    attack = a_attack > 25 ? 25 : a_attack;
 }
 
 void Perso::setdefense(float d_defense)
 {
-    defense = d_defense;
+    defense = d_defense > 70 ? 70 : d_defense;
     
 }
 
@@ -92,9 +92,19 @@ std::string Perso::getattackType()
     return attackType;
 }
 
+float Perso::getmaxHealth()
+{
+    return maxHealth;
+}
+
 void Perso::setattackType(std::string a_type, Perso& target)
 {
     this -> attackType = a_type;
+}
+
+void Perso::setmaxHealth(float maxH)
+{
+    maxHealth = maxH;
 }
 
 std::ostream& operator<<(std::ostream& out, Perso& self)

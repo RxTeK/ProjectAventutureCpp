@@ -5,9 +5,10 @@
 Player::Player()
 {
     setname("Player");
+    setmaxHealth(30.0);
     sethealth(30.0);
-    setattack(17.0);
-    setdefense(15.0);
+    setattack(10.0);
+    setdefense(30.0);
     
 }
 
@@ -38,7 +39,7 @@ void Player::setattackName(std::string aName)
 
 void Player::setchooseAttack(int a_Type)
 {
-    attackName=a_Type;
+    attackName= a_Type;
     if (a_Type == 1)
     {
         setattackName("Punch");

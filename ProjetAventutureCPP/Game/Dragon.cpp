@@ -3,9 +3,9 @@
 Dragon::Dragon()
 {
     setname("Dragon");
-    sethealth(100.0);
-    setattack(25.0);
-    setdefense(0.0);
+    sethealth(60.0);
+    setattack(22.0);
+    setdefense(10.0);
 }
 
 void Dragon::setattackType(std::string a_type, Perso& target)

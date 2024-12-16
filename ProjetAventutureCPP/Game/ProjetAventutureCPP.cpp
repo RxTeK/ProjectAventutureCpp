@@ -168,9 +168,9 @@ void chooseReward(Player &player)
 
 void clearHeal(Player &player)
 {
-    if (player.gethealth()<30)
+    if (player.gethealth()<player.getmaxHealth())
     {
-        player.sethealth(30);
+        player.sethealth(player.getmaxHealth());
         std::cout << "You have been healed\n";
     }
 }

@@ -6,7 +6,7 @@ Slime::Slime()
     setname("Slime");
     sethealth(10.0);
     setattack(5.0);
-    setdefense(20.0);
+    setdefense(15.0);
 }
 
 void Slime::setattackType(std::string a_type, Perso& target)

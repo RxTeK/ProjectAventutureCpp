@@ -3,9 +3,9 @@
 Orc::Orc()
 {
     setname("Orc");
-    sethealth(50.0); 
-    setattack(10.0);
-    setdefense(20.0);
+    sethealth(16.0); 
+    setattack(12.0);
+    setdefense(22.0);
 }
 
 void Orc::setattackType(std::string a_type, Perso& target)
