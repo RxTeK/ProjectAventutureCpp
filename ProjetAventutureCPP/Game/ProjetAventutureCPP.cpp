@@ -29,25 +29,21 @@ void text (std::string text)
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     for (int i = 0; i < text.size()+4; ++i)
     {
-        SetConsoleTextAttribute(hConsole, 1);
+        SetConsoleTextAttribute(hConsole, 4);
         std::cout << "#";
-        SetConsoleTextAttribute(hConsole, 15);
     }
     std::cout <<std::endl;
-    SetConsoleTextAttribute(hConsole, 1);
     std::cout <<"# ";
-    SetConsoleTextAttribute(hConsole, 15);
+    SetConsoleTextAttribute(hConsole, 2);
     std::cout << text;
-    SetConsoleTextAttribute(hConsole, 1);
+    SetConsoleTextAttribute(hConsole, 4);
     std::cout<<" #"<<std::endl;
-    SetConsoleTextAttribute(hConsole, 15);
     
     for (int i = 0; i < text.size()+4; ++i)
     {
-        SetConsoleTextAttribute(hConsole, 1);
         std::cout << "#";
-        SetConsoleTextAttribute(hConsole, 15);
     }
+    SetConsoleTextAttribute(hConsole, 3);
 }
 
 //create vector rooms
@@ -91,7 +87,7 @@ void fight(Player* player, Perso* enemy, bool& isDead)
     isDead = false;
 
     // Affichage du joueur et de l'ennemi
-    system("cls");
+    ("cls");
     SetConsoleTextAttribute(hConsole, 3);
     std::cout << "#########################" << std::endl;
     std::cout << *player;
@@ -180,12 +176,14 @@ void initializeEnemies(std::vector<enemy*>& enemies, std::vector<Room*>& rooms)
 //reward
 void chooseReward(Player &player)
 {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     Heal healthPotion;
     Sword sword;
     Armor armor;
     int rewardChoice;
     std::cout << "Choose your Reward.\n" << "1." << healthPotion << "2." << sword << "3." << armor <<"\n";
     std::cin >> rewardChoice;
+    SetConsoleTextAttribute(hConsole, 1);
     while (true)
     {
             switch (rewardChoice)
@@ -219,6 +217,7 @@ void clearHeal(Player &player)
 
 int main()
 {
+    PlaySound(TEXT("NormalFightMusique.wav"),NULL,SND_FILENAME|SND_ASYNC | SND_LOOP);
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, 3);
     int nbrRoom = 1;
@@ -228,8 +227,6 @@ int main()
     std::vector<Room*> rooms;
     BossRoom bossRoom;
     initializeRooms(rooms, bossRoom);
-
-    PlaySound(TEXT("NormalFightMusique.wav"),NULL,SND_FILENAME | SND_LOOP);
     
     // Tick
     while (true)
@@ -241,6 +238,7 @@ int main()
         switch (c)
         {
         case KEY_LEFT:
+            system("cls");
             // Room
                 while(!rooms.empty())
                 {
@@ -286,6 +284,7 @@ int main()
                         std::cout << "Room cleared!\n";
                         if (rooms[0]->getName() == bossRoom.getName() )
                         {
+                            SetConsoleTextAttribute(hConsole, 2);
                             std::cout << "You have WIN!\n";
                             Sleep(2000);
                             return 0;
