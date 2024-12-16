@@ -12,7 +12,7 @@ void Heal::seteffectType(std::string e_Type, Perso& target)
     if (e_Type == "Effect")
     {
         target.addHealth(10);
-        std::cout << "You Gained 10 extra HP with Health Potion (max : 100). \n";
+        std::cout << "You Gained 10 extra HP with Health Potion (max : 50). \n";
         target.setmaxHealth(target.getmaxHealth()+10);
     }
 }
