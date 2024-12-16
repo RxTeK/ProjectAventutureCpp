@@ -109,11 +109,9 @@ void Perso::setmaxHealth(float maxH)
 
 std::ostream& operator<<(std::ostream& out, Perso& self)
 {
-    out << "\n";
-    std::cout << self.getname()<<"\n";
-    std::cout << self.getname() <<" health is " << roundf(self.gethealth()) << "\n";
-    std::cout << self.getname() <<" attack is " << roundf(self.getattack()) << "\n";
-    std::cout << self.getname() <<" defense is " << roundf(self.getdefense()) << "\n";
-    std::cout << "\n";
+    std::cout << "# "<< self.getname()<<"                #\n";
+    std::cout << "# "<< self.getname() <<" health is: " << roundf(self.gethealth()) <<"  #"<<"\n";
+    std::cout << "# "<< self.getname() <<" attack is: " << roundf(self.getattack()) <<"  #"<<"\n";
+    std::cout << "# "<< self.getname() <<" defense is: " << roundf(self.getdefense()) <<" #"<<"\n";
     return out;
 }

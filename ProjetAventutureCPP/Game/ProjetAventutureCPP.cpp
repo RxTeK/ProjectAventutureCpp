@@ -21,6 +21,33 @@
 #define KEY_LEFT 'q'
 #define KEY_RIGHT 'd'
 
+
+void text (std::string text)
+{
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    for (int i = 0; i < text.size()+4; ++i)
+    {
+        SetConsoleTextAttribute(hConsole, 1);
+        std::cout << "#";
+        SetConsoleTextAttribute(hConsole, 15);
+    }
+    std::cout <<std::endl;
+    SetConsoleTextAttribute(hConsole, 1);
+    std::cout <<"# ";
+    SetConsoleTextAttribute(hConsole, 15);
+    std::cout << text;
+    SetConsoleTextAttribute(hConsole, 1);
+    std::cout<<" #"<<std::endl;
+    SetConsoleTextAttribute(hConsole, 15);
+    
+    for (int i = 0; i < text.size()+4; ++i)
+    {
+        SetConsoleTextAttribute(hConsole, 1);
+        std::cout << "#";
+        SetConsoleTextAttribute(hConsole, 15);
+    }
+}
+
 //create vector rooms
 void initializeRooms(std::vector<Room*>& rooms, BossRoom)
 {
@@ -58,26 +85,36 @@ void initializeRooms(std::vector<Room*>& rooms, BossRoom)
 //fight
 void fight(Player* player, Perso* enemy, bool& isDead)
 {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     isDead = false;
 
     // Affichage du joueur et de l'ennemi
     system("cls");
+    SetConsoleTextAttribute(hConsole, 3);
+    std::cout << "#########################" << std::endl;
     std::cout << *player;
+    std::cout << "#########################" << std::endl;
+    std::cout << std::endl;
     Sleep(500);
-    std::cout << *enemy << "\n";
+    SetConsoleTextAttribute(hConsole, 4);
+    std::cout << "########################" << std::endl;
+    std::cout << *enemy;
+    std::cout << "########################" << std::endl;
     Sleep(500);
+    SetConsoleTextAttribute(hConsole, 15);
 
     // Tour du joueur
     std::cout << "Player attack turn:\n1.Punch      2.Slash\n";
     std::cin >> player->attackNumber;
     system("cls");
+    SetConsoleTextAttribute(hConsole, 3);
     player->setchooseAttack(player->attackNumber);
     player->setattackType(player->getattackName(), *enemy);
+    SetConsoleTextAttribute(hConsole, 15);
 
     // Vérifie si l'ennemi est mort
     if (enemy->dead())
     {
-        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(hConsole, 4);
         std::cout << "Enemy is dead.\n";
         SetConsoleTextAttribute(hConsole, 15);
@@ -89,15 +126,15 @@ void fight(Player* player, Perso* enemy, bool& isDead)
     // Tour de l'ennemi
     Sleep(2000);
     system("cls");
+    SetConsoleTextAttribute(hConsole, 4);
     enemy->setattackType("Head butt", *player);
-
+    SetConsoleTextAttribute(hConsole, 15);
     // Vérifie si le joueur est mort
     if (player->dead())
     {
-        std::cout << "You are dead! Game Over.\n";
+        text("You are dead! Game Over.\n");
         exit(0);
     }
-
     Sleep(2000);
     system("cls");
 }
@@ -175,32 +212,6 @@ void clearHeal(Player &player)
     {
         player.sethealth(player.getmaxHealth());
         std::cout << "You have been healed\n";
-    }
-}
-
-void text (std::string text)
-{
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    for (int i = 0; i < text.size()+4; ++i)
-    {
-        SetConsoleTextAttribute(hConsole, 4);
-        std::cout << "#";
-        SetConsoleTextAttribute(hConsole, 3);
-    }
-    std::cout <<std::endl;
-    SetConsoleTextAttribute(hConsole, 4);
-    std::cout <<"# ";
-    SetConsoleTextAttribute(hConsole, 3);
-    std::cout << text;
-    SetConsoleTextAttribute(hConsole, 4);
-    std::cout<<" #"<<std::endl;
-    SetConsoleTextAttribute(hConsole, 3);
-    
-    for (int i = 0; i < text.size()+4; ++i)
-    {
-        SetConsoleTextAttribute(hConsole, 4);
-        std::cout << "#";
-        SetConsoleTextAttribute(hConsole, 3);
     }
 }
 
