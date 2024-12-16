@@ -247,7 +247,9 @@ int main()
                 
                     if (rooms[0]->getName() == bossRoom.getName() )
                     {
+                        PlaySound(0,0,0);
                         monsters.push_back(new Dragon);
+                        PlaySound(TEXT("BossFightMusique.wav"),NULL,SND_FILENAME|SND_ASYNC | SND_LOOP);
                     }
                     else
                     {
