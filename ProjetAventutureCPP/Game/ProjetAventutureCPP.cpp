@@ -18,9 +18,6 @@
 #include "LargeRoom.h"
 #include "LittleRoom.h"
 #include "Room.h"
-
-#define KEY_UP 'z'
-#define KEY_DOWN 's'
 #define KEY_LEFT 'q'
 #define KEY_RIGHT 'd'
 
@@ -64,7 +61,7 @@ void fight(Player* player, Perso* enemy, bool& isDead)
     isDead = false;
 
     // Affichage du joueur et de l'ennemi
-    //system("cls");
+    system("cls");
     std::cout << *player;
     Sleep(500);
     std::cout << *enemy << "\n";
@@ -73,21 +70,25 @@ void fight(Player* player, Perso* enemy, bool& isDead)
     // Tour du joueur
     std::cout << "Player attack turn:\n1.Punch      2.Slash\n";
     std::cin >> player->attackNumber;
-    //system("cls");
+    system("cls");
     player->setchooseAttack(player->attackNumber);
     player->setattackType(player->getattackName(), *enemy);
 
     // Vérifie si l'ennemi est mort
     if (enemy->dead())
     {
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(hConsole, 4);
         std::cout << "Enemy is dead.\n";
+        SetConsoleTextAttribute(hConsole, 15);
         isDead = true;
+        Sleep(4000);
         return;
     }
 
     // Tour de l'ennemi
     Sleep(2000);
-    //system("cls");
+    system("cls");
     enemy->setattackType("Head butt", *player);
 
     // Vérifie si le joueur est mort
@@ -98,7 +99,7 @@ void fight(Player* player, Perso* enemy, bool& isDead)
     }
 
     Sleep(2000);
-    //system("cls");
+    system("cls");
 }
 
 //create vector enemies
@@ -137,6 +138,7 @@ void initializeEnemies(std::vector<enemy*>& enemies, std::vector<Room*>& rooms)
     }
 }
 
+//reward
 void chooseReward(Player &player)
 {
     Heal healthPotion;
@@ -166,6 +168,7 @@ void chooseReward(Player &player)
     }
 }
 
+//heal
 void clearHeal(Player &player)
 {
     if (player.gethealth()<player.getmaxHealth())
@@ -175,8 +178,36 @@ void clearHeal(Player &player)
     }
 }
 
+void text (std::string text)
+{
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    for (int i = 0; i < text.size()+4; ++i)
+    {
+        SetConsoleTextAttribute(hConsole, 4);
+        std::cout << "#";
+        SetConsoleTextAttribute(hConsole, 3);
+    }
+    std::cout <<std::endl;
+    SetConsoleTextAttribute(hConsole, 4);
+    std::cout <<"# ";
+    SetConsoleTextAttribute(hConsole, 3);
+    std::cout << text;
+    SetConsoleTextAttribute(hConsole, 4);
+    std::cout<<" #"<<std::endl;
+    SetConsoleTextAttribute(hConsole, 3);
+    
+    for (int i = 0; i < text.size()+4; ++i)
+    {
+        SetConsoleTextAttribute(hConsole, 4);
+        std::cout << "#";
+        SetConsoleTextAttribute(hConsole, 3);
+    }
+}
+
 int main()
 {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, 3);
     int nbrRoom = 1;
     Player p1_obj;
     Player* p1 = &p1_obj;
@@ -189,7 +220,8 @@ int main()
     while (true)
     {
         char c;
-        std::cout << "Press 'q' to play, 'd' to quit): ";
+        text ("Press q to play, or d to quit): ");
+        std::cout << std::endl;
         std::cin >> c;
         switch (c)
         {
@@ -233,7 +265,7 @@ int main()
                             return 0;
                         }
                     }
-
+    
                     if (rooms[0]->getnumberEnemy() == 0)
                     {
                         std::cout << "Room cleared!\n";
@@ -249,11 +281,11 @@ int main()
                         nbrRoom++; 
                     }
                 }
-
+    
             // Quit
         case KEY_RIGHT:
             return 0;
-
+    
             // Invalid input
         default:
             std::cout << "Invalid input. Try again.\n";
