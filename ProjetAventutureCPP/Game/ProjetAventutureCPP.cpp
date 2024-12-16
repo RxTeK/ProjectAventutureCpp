@@ -19,6 +19,7 @@
 #include "LargeRoom.h"
 #include "LittleRoom.h"
 #include "Room.h"
+#include <conio.h>
 #define KEY_LEFT 'q'
 #define KEY_RIGHT 'd'
 
@@ -88,7 +89,7 @@ void fight(Player* player, Perso* enemy, bool& isDead)
 
     // Affichage du joueur et de l'ennemi
     ("cls");
-    SetConsoleTextAttribute(hConsole, 3);
+    SetConsoleTextAttribute(hConsole, 2);
     std::cout << "#########################" << std::endl;
     std::cout << *player;
     std::cout << "#########################" << std::endl;
@@ -99,16 +100,27 @@ void fight(Player* player, Perso* enemy, bool& isDead)
     std::cout << *enemy;
     std::cout << "########################" << std::endl;
     Sleep(500);
-    SetConsoleTextAttribute(hConsole, 15);
+    SetConsoleTextAttribute(hConsole, 3);
 
     // Tour du joueur
-    std::cout << "Player attack turn:\n1.Punch      2.Slash\n";
-    std::cin >> player->attackNumber;
-    system("cls");
     SetConsoleTextAttribute(hConsole, 3);
+    std::cout << "Player attack turn:\nq. Punch      d. Slash\n";
+    char attak = '^';
+    attak = _getch();
+    switch ( attak)
+    {
+    case KEY_LEFT:
+        player->attackNumber = 1;
+        break;
+    case KEY_RIGHT:
+        player->attackNumber = 2;
+        break;
+    }
+    system("cls");
+    SetConsoleTextAttribute(hConsole, 2);
     player->setchooseAttack(player->attackNumber);
     player->setattackType(player->getattackName(), *enemy);
-    SetConsoleTextAttribute(hConsole, 15);
+    SetConsoleTextAttribute(hConsole, 3);
 
     // Vérifie si l'ennemi est mort
     if (enemy->dead())
@@ -131,6 +143,7 @@ void fight(Player* player, Perso* enemy, bool& isDead)
     if (player->dead())
     {
         text("You are dead! Game Over.\n");
+        Sleep(5000);
         exit(0);
     }
     Sleep(2000);
@@ -231,11 +244,11 @@ int main()
     // Tick
     while (true)
     {
-        char c;
+        char ch = ',';
         text ("Press q to play, or d to quit): ");
         std::cout << std::endl;
-        std::cin >> c;
-        switch (c)
+        ch = _getch();
+        switch (ch)
         {
         case KEY_LEFT:
             system("cls");
@@ -305,7 +318,7 @@ int main()
             // Invalid input
         default:
             std::cout << "Invalid input. Try again.\n";
-            return 0;
+            system("cls");
         }
     }
 }
