@@ -57,12 +57,12 @@ void Perso::sethealth(float h_health)
 
 void Perso::setattack(float a_attack)
 {
-    attack = a_attack; // > 30 ? 30 : a_attack
+    attack = a_attack;
 }
 
 void Perso::setdefense(float d_defense)
 {
-    defense = d_defense > 80 ? 80 : d_defense;
+    defense = d_defense;
     
 }
 

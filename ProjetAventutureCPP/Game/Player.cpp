@@ -53,12 +53,12 @@ void Player::setattackType(std::string a_type, Perso& target)
 {
     if (a_type == "Punch")
     {
-        target.reduceHealth(getattack()/(target.getdefense()/100+1));
-        std::cout << getname() << " attack " << target.getname() << " with Punch dealing " << roundf(getattack()/(target.getdefense()/100+1)) << " damage" << "\n";
+        target.reduceHealth(getattack()-(getattack()*target.getdefense()/100));
+        std::cout << getname() << " attack " << target.getname() << " with Punch dealing " << roundf(getattack()-(getattack()*target.getdefense()/100)) << " damage" << "\n";
     }
     if (a_type == "Slash")
     {
-        target.reduceHealth((getattack()*1.2)/(target.getdefense()/100+1));
-        std::cout << getname() << " attack " << target.getname() << " with Slash dealing " << roundf((getattack()*1.2)/(target.getdefense()/100+1)) << " damage" << "\n";
+        target.reduceHealth(getattack()-(getattack()*target.getdefense()/90));
+        std::cout << getname() << " attack " << target.getname() << " with Slash dealing " << roundf(getattack()-(getattack()*target.getdefense()/90)) << " damage" << "\n";
     }
 }

@@ -3,8 +3,8 @@
 Dragon::Dragon()
 {
     setname("Dragon");
-    sethealth(500.0);
-    setattack(30.0);
+    sethealth(100.0);
+    setattack(25.0);
     setdefense(0.0);
 }
 

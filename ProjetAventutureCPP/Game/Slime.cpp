@@ -4,8 +4,8 @@
 Slime::Slime()
 {
     setname("Slime");
-    sethealth(20.0);
-    setattack(6.0);
+    sethealth(10.0);
+    setattack(5.0);
     setdefense(20.0);
 }
 

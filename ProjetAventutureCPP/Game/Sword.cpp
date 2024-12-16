@@ -10,7 +10,7 @@ void Sword::seteffectType(std::string e_Type, Perso& target)
 {
     if (e_Type == "Effect")
     {
-        target.addAttack(3);
-        std::cout << "You Gained 3 extra DMG with Sword Upgrade. \n";
+        target.addAttack(10);
+        std::cout << "You Gained 5 extra DMG with Sword Upgrade. \n";
     }
 }

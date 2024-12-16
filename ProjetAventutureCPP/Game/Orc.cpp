@@ -3,8 +3,8 @@
 Orc::Orc()
 {
     setname("Orc");
-    sethealth(20.0); //40
-    setattack(18.0);
+    sethealth(50.0); 
+    setattack(10.0);
     setdefense(20.0);
 }
 

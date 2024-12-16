@@ -12,7 +12,7 @@ void Armor::seteffectType(std::string e_Type, Perso& target)
 {
     if (e_Type == "Effect")
     {
-        target.addDefense(5);
+        target.addDefense(10);
         std::cout << "You Gained 5 extra DEF with Armor Upgrade. \n";
     }
 }
