@@ -32,4 +32,4 @@
 *.app
 
 .idea/*
-**/debug/*
+ProjetAventutureCPP\x64/debug/*
