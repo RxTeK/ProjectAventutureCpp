@@ -1,7 +1,6 @@
 #include <iostream>
-#include <Windows.h>
-#include <mmsystem.h>
 #include <random>
+#include <windows.h>
 #include "Perso.h"
 #include <vector>
 #include "Dragon.h"
@@ -19,14 +18,6 @@
 #include "LargeRoom.h"
 #include "LittleRoom.h"
 #include "Room.h"
-<<<<<<< Updated upstream
-=======
-
-#pragma comment(lib, "Winmm.lib")
-
-#define KEY_UP 'z'
-#define KEY_DOWN 's'
->>>>>>> Stashed changes
 #define KEY_LEFT 'q'
 #define KEY_RIGHT 'd'
 
@@ -235,7 +226,6 @@ int main()
     std::vector<Room*> rooms;
     BossRoom bossRoom;
     initializeRooms(rooms, bossRoom);
-    PlaySound(TEXT("NormalFightMusique.wav"),NULL,SND_FILENAME | SND_LOOP);
     
     // Tick
     while (true)

@@ -3,7 +3,7 @@
 Ogre::Ogre()
 {
     setname("Ogre");
-    sethealth(22.0);
+    sethealth(20.0);
     setattack(15.0);
     setdefense(25.0);
 }
