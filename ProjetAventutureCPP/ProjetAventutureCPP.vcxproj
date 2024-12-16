@@ -1287,6 +1287,10 @@
     <ClInclude Include="Game\Slime.h" />
     <ClInclude Include="Game\Sword.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="x64\Debug\BossFightMusique.wav" />
+    <Content Include="x64\Debug\NormalFightMusique.wav" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
