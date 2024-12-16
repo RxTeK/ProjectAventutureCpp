@@ -1,6 +1,7 @@
 #include <iostream>
 #include <random>
 #include <windows.h>
+#include <mmsystem.h>
 #include "Perso.h"
 #include <vector>
 #include "Dragon.h"
@@ -21,6 +22,7 @@
 #define KEY_LEFT 'q'
 #define KEY_RIGHT 'd'
 
+#pragma comment(lib, "Winmm.lib")
 
 void text (std::string text)
 {
@@ -226,6 +228,8 @@ int main()
     std::vector<Room*> rooms;
     BossRoom bossRoom;
     initializeRooms(rooms, bossRoom);
+
+    PlaySound(TEXT("NormalFightMusique.wav"),NULL,SND_FILENAME | SND_LOOP);
     
     // Tick
     while (true)
