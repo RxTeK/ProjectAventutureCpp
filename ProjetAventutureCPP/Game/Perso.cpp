@@ -79,7 +79,7 @@ void Perso::addHealth(float amount)
 
 void Perso::addAttack(float amount)
 {
-    attack >= 22 ? 22 : attack += amount;
+    attack >= 31 ? 31 : attack += amount;
 }
 
 void Perso::addDefense(float amount)
